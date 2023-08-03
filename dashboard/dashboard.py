@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import streamlit_extras
 from streamlit_extras.colored_header import colored_header
 #from streamlit_extras.metric_cards import style_metric_cards
 
@@ -15,9 +14,22 @@ st.set_page_config(
 st.header(':bar_chart: Dashboard')
 st.markdown("---")
 
-st.sidebar.title('Menu')
+st.sidebar.image('Logo.png')
+st.sidebar.title(':chart_with_downwards_trend: Menu')
 
+menu = st.sidebar.selectbox(' ', ['Selecionar', 'Login', 'Processo produtivo', 'Dashboard'])
 
+if menu == 'Login':
+    st.title('Login')
+
+    user_name = st.text_input('Usuário')
+    password = st.text_input('Password', type='password')
+
+    usuario = st.selectbox('Selecionar usuário', ['Selecionar', 'Usuário 1', 'Usuário 2', 'Usuário 3', 'Usuário 4', 'Usuário 5'])
+
+    st.checkbox('Login')
+
+#--COMEÇo-------LOGIN----------------------------------------------------------------------
 # Selecionar modelo da placa
 st.sidebar.header(':chart_with_downwards_trend: Modelo da placa')
 modelo_placa = st.sidebar.selectbox(' ', ['Selecionar', 'Modelo X', 'Modelo Y', 'Modelo Z'])
@@ -154,7 +166,7 @@ with col5:
 
 
 
-# Informações de produção
+# Informações de produção --------------------------------------------------------------------
 st.sidebar.markdown("---")
 tempo_medio = st.sidebar.checkbox('Tempo médio de produção de uma placa')
 numero_de_paradas = st.sidebar.checkbox('Número de paradas do equipamento')
@@ -165,21 +177,25 @@ col1, col2, col3, col4, col5 = st.columns(5, gap='medium')
 with col1:
     if tempo_medio:
         st.markdown('#### Tempo médio de produção de uma placa ####')
+        st.markdown('### 920 ###')
 
 
 with col2:
     if numero_de_paradas:
         st.markdown('#### Número de paradas do equipamento ####')
+        st.markdown('### 750 ###')
 
 
 with col3:
     if tempo_de_parada:
         st.markdown('#### Tempo de parada do equipamento ####')
+        st.markdown('### 150 ###')
 
 
 with col4:
     if ordem_de_producao:
         st.markdown('#### Ordem de produção ####')
+        st.markdown('### 300 ###')
 
 with col5:
     if defeito5:
